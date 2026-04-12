@@ -146,7 +146,7 @@ function Field({ label, children }) {
 }
 
 export default function App() {
-const apiUrl = "https://danishh-ux-mental-health-api.hf.space/predict";
+const [apiUrl, setApiUrl] = useState("https://danishh-ux-mental-health-api.hf.space/predict");
   const [form, setForm] = useState(defaultValues);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
