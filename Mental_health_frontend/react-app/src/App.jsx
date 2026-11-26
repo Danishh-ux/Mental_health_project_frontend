@@ -286,7 +286,7 @@ const [apiUrl, setApiUrl] = useState("https://danishh-ux-mental-hea-frontnd.hf.s
               <option value={1}>Rarely</option>
               <option value={2}>Sometimes</option>
               <option value={3}>Often</option>
-              <option value={4}>Always / N/A</option>
+              <option value={4}>Don't know / N/A</option>
             </select>
           </Field>
 
@@ -386,6 +386,12 @@ const [apiUrl, setApiUrl] = useState("https://danishh-ux-mental-hea-frontnd.hf.s
                 ? "The Random Forest classifier suggests this profile aligns with individuals who seek mental health treatment based on historical data."
                 : "The Random Forest classifier does not indicate an immediate statistical probability for mental health treatment."}
             </div>
+            {typeof result.probability === "number" && (
+              <div style={needsTreatment ? styles.resultSubNegative : styles.resultSubPositive}>
+                <strong>Model confidence:</strong>{" "}
+                {Math.round((needsTreatment ? result.probability : 1 - result.probability) * 100)}%
+              </div>
+            )}
           </div>
         )}
 
